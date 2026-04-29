@@ -1,9 +1,11 @@
 import sqlite3
+import os
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 app.secret_key = "kelly_mind_ai_2026"
 
+# Initialisation de la base de données
 def init_db():
     conn = sqlite3.connect('bienetre.db')
     cursor = conn.cursor()
@@ -24,19 +26,18 @@ def init_db():
 
 init_db()
 
+# Logique de l'IA KellyMind
 def moteur_ia(humeur, sommeil, stress, activite):
-    # Calcul du score
     score = 50 + (sommeil * 5) - (stress * 4)
-    if activite in ["sport", "lecture"]: score += 15
+    if activite in ["sport", "lecture", "méditation"]: score += 15
     score = max(0, min(100, score))
 
-    # Génération de l'analyse IA
     if score > 80:
-        msg = f"Analyse IA : État optimal détecté. Ton activité ({activite}) booste ta sérotonine. Continue ainsi !"
+        msg = f"Analyse IA : État optimal. Ton activité ({activite}) booste ton bien-être. Continue !"
     elif score > 50:
-        msg = f"Analyse IA : Équilibre fragile. Le sommeil ({sommeil}h) est correct, mais attention au pic de stress."
+        msg = f"Analyse IA : Équilibre correct, mais surveille ton niveau de stress ({stress}/10)."
     else:
-        msg = "Analyse IA : Alerte fatigue. Ton système nerveux demande une pause immédiate. Priorise le repos."
+        msg = "Analyse IA : Alerte fatigue. Ton système nerveux a besoin de repos immédiat."
     
     return score, msg
 
@@ -72,4 +73,6 @@ def dashboard():
     return render_template('dashboard.html', logs=logs)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # TRÈS IMPORTANT POUR RENDER :
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
