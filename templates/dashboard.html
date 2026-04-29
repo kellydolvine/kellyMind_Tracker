@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives - KellyMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">KellyMind Tracker 🌿</div>
+        <div class="nav-links">
+            <a href="/">Test</a>
+            <a href="/dashboard">Archives</a>
+        </div>
+    </nav>
+    <div class="container" style="max-width: 800px;">
+        <h1>Mes Archives Zen</h1>
+        {% for entree in entrees %}
+        <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong style="font-size: 1.2rem;">{{ entree.humeur }}</strong>
+                <span style="background:#e0f2f1; color:#00897b; padding:5px 12px; border-radius:10px; font-weight:bold;">
+                    {{ entree.indice_serenite }}% de sérénité
+                </span>
+            </div>
+            <p style="color:#666; font-size:0.9rem; margin:10px 0;">
+                Sommeil: {{ entree.sommeil }}h | Activité: {{ entree.activite }}
+            </p>
+            <p style="color:#333; font-style:italic;">"{{ entree.conseil }}"</p>
+        </div>
+        {% endfor %}
+        <button onclick="window.location.href='/'" style="background:#4b5563; margin-top:20px;">Faire un nouveau test</button>
+    </div>
+</body>
+</html>

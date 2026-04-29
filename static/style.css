@@ -1,0 +1,59 @@
+:root {
+    --primary: #00bfa5;
+    --secondary: #ff4081;
+    --bg-gradient: linear-gradient(135deg, #00bfa5 0%, #8e44ad 100%);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    margin: 0; color: #2c3e50;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 15px 10%;
+    display: flex; justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.navbar b { color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+.container {
+    max-width: 600px; margin: 50px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px; border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+h1 { color: #8e44ad; text-align: center; font-weight: 800; }
+
+input, select {
+    width: 100%; padding: 15px; margin: 10px 0;
+    border: 2px solid #eee; border-radius: 20px;
+    font-size: 1rem; transition: 0.3s;
+}
+
+input:focus { border-color: var(--primary); outline: none; }
+
+button {
+    width: 100%; padding: 18px; margin-top: 20px;
+    background: var(--secondary); color: white;
+    border: none; border-radius: 20px;
+    font-size: 1.2rem; font-weight: bold; cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 64, 129, 0.3);
+}
+
+.card {
+    background: white; border-radius: 25px; padding: 25px;
+    margin-bottom: 20px; position: relative;
+    overflow: hidden; border-left: 10px solid var(--primary);
+}
+
+.score-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: #f1f8e9; color: var(--primary);
+    padding: 8px 15px; border-radius: 50px; font-weight: 800;
+}

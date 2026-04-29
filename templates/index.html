@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - KellyMind 🌿</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">KellyMind Tracker 🌿</div>
+        <div class="nav-links">
+            <a href="/">Test</a>
+            <a href="/dashboard">Archives</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Comment te sens-tu ?</h1>
+        <form action="/enregistrer" method="POST">
+            <div class="input-group">
+                <label>Humeur</label>
+                <select name="humeur">
+                    <option value="Heureuse">Heureuse 😊</option>
+                    <option value="Fatiguée">Fatiguée 😴</option>
+                    <option value="Stressée">Stressée 😫</option>
+                    <option value="Calme">Calme 🧘‍♀️</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Heures de sommeil</label>
+                <input type="number" name="sommeil" required>
+            </div>
+            <div class="input-group">
+                <label>Niveau de stress (1-10)</label>
+                <input type="number" name="stress" min="1" max="10" required>
+            </div>
+            <div class="input-group">
+                <label>Activité</label>
+                <select name="activite">
+                    <option value="sport">Sport 🏃‍♀️</option>
+                    <option value="travail">Travail 💻</option>
+                    <option value="lecture">Lecture / Détente 📖</option>
+                </select>
+            </div>
+            <button type="submit">Analyser ma journée ✨</button>
+        </form>
+    </div>
+</body>
+</html>
